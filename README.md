@@ -1,4 +1,7 @@
 # Digital Ocean Kubernetes Operator
+<p align="center">
+    <img src=".assets/DO_Logo_Horizontal_Blue.png" />
+</p>
 
 This operator provides Digital Ocean Cloud resources via Kubernetes Custom Resource Definitions (CRDs).
 API Group is `do.movetokube.com`. Current version is `v1alpha1`. Example CR `apiVersion`: `do.movetokube.com/v1alpha1` 
