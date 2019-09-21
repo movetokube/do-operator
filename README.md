@@ -1,6 +1,6 @@
 # Digital Ocean Kubernetes Operator
 <p align="center">
-    <img src=".assets/DO_Logo_Horizontal_Blue.svg" />
+    <img src=".assets/DO_Logo_horizontal_blue.svg" />
 </p>
 
 This operator provides Digital Ocean Cloud resources via Kubernetes Custom Resource Definitions (CRDs).
