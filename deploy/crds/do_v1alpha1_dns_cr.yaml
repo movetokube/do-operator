@@ -1,0 +1,25 @@
+apiVersion: do.movetokube.com/v1alpha1
+kind: DNS
+metadata:
+  name: do-op
+  namespace: sandbox
+spec:
+  # common fields for most records
+  domainName: example.com
+  recordType: A
+  # name of a record, usually the hostname
+  hostname: do-operator
+  value:
+    # this will take IP address of an ingress from the same namespace
+    #ref:
+    #  ingressName: nameOfIngress
+    literal: 127.0.0.1
+  ttl: 3600
+  # specific for SRV records only
+  port: 80
+  # specific for SRV and MX
+  priority: 100
+  # specific for CAA records only
+  flags: 0
+  tag: issue
+
