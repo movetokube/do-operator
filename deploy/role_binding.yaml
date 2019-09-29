@@ -1,11 +1,12 @@
-kind: RoleBinding
+kind: ClusterRoleBinding
 apiVersion: rbac.authorization.k8s.io/v1
 metadata:
   name: do-operator
 subjects:
 - kind: ServiceAccount
   name: do-operator
+  namespace: sandbox
 roleRef:
-  kind: Role
+  kind: ClusterRole
   name: do-operator
   apiGroup: rbac.authorization.k8s.io

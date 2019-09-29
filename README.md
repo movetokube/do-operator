@@ -9,7 +9,56 @@ API Group is `do.movetokube.com`. Current version is `v1alpha1`. Example CR `api
 ## Supported Digital Ocean resources
 ### DNS
 
-TBD
+Any DNS record is supported by this operator. In order to create a DNS record, you need to register a domain name first.
+After domain name is registered in DigitalOcean, use the following CR to create any record for any domain registered in DO.
+Here is an example of the CR, which creates an A type record for domain example.com. Hostname is set to "do-operator", which
+points to 127.0.0.1 IP address. TTL is set to 600 seconds.
+
+```yaml
+apiVersion: do.movetokube.com/v1alpha1
+kind: DNS
+metadata:
+  name: do-op
+  namespace: sandbox
+spec:
+  # common fields for most records
+  domainName: example.com
+  recordType: A
+  # name of a record, usually the hostname
+  hostname: do-operator
+  value:
+    literal: 127.0.0.1
+  ttl: 600
+```
+
+Full list of fields that the DNS CR supports is showcased below:
+
+```yaml
+apiVersion: do.movetokube.com/v1alpha1
+kind: DNS
+metadata:
+  name: do-op
+  namespace: sandbox
+spec:
+  # common fields for most records
+  domainName: example.com
+  recordType: A
+  # name of a record, usually the hostname
+  hostname: do-operator
+  value:
+    # this will take IP address of an ingress from the same namespace
+    #ref:
+    #  ingressName: nameOfIngress
+    literal: 127.0.0.1
+  ttl: 3600
+  # specific for SRV records only
+  port: 80
+  # specific for SRV and MX
+  priority: 100
+  # specific for CAA records only
+  flags: 0
+  tag: issue
+```
 
 ## Contribution guide
 This operator is built with operator-sdk v0.10.0 and is using Go modules. In order to contribute, please fork this project

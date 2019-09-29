@@ -2,9 +2,12 @@ module github.com/movetokube/do-operator
 
 require (
 	github.com/NYTimes/gziphandler v1.0.1 // indirect
+	github.com/digitalocean/godo v1.22.0
+	github.com/go-logr/logr v0.1.0
 	github.com/go-openapi/spec v0.19.0
 	github.com/operator-framework/operator-sdk v0.10.1-0.20190912205659-c084b570a6af
 	github.com/spf13/pflag v1.0.3
+	golang.org/x/oauth2 v0.0.0-20190402181905-9f3314589c9a
 	k8s.io/api v0.0.0-20190612125737-db0771252981
 	k8s.io/apimachinery v0.0.0-20190612125636-6a5db36e93ad
 	k8s.io/client-go v11.0.0+incompatible

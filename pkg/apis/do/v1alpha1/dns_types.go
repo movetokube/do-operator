@@ -1,32 +1,71 @@
 package v1alpha1
 
 import (
+	"encoding/json"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 )
-
-// EDIT THIS FILE!  THIS IS SCAFFOLDING FOR YOU TO OWN!
-// NOTE: json tags are required.  Any new fields you add must have json tags for the fields to be serialized.
 
 // DNSSpec defines the desired state of DNS
 // +k8s:openapi-gen=true
 type DNSSpec struct {
-	// INSERT ADDITIONAL SPEC FIELDS - desired state of cluster
-	// Important: Run "operator-sdk generate k8s" to regenerate code after modifying this file
-	// Add custom validation using kubebuilder tags: https://book-v1.book.kubebuilder.io/beyond_basics/generating_crd.html
-	RecordType string `json:"recordType"`
-	//Hostname string
-	//Value string
-	//TTL uint32
-	//Port uint32
-	//Priority int32
+	DomainName string         `json:"domainName"`
+	RecordType string         `json:"recordType"`
+	Hostname   string         `json:"hostname"`
+	Value      DNSRecordValue `json:"value"`
+	TTL        *int           `json:"ttl,omitempty"`
+	Port       *int           `json:"port,omitempty"`
+	Priority   *int           `json:"priority,omitempty"`
+	Flag       *int           `json:"flag,omitempty"`
+	Weight     *int           `json:"weight,omitempty"`
+	Tag        *string        `json:"tag,omitempty"`
 }
+
+type DNSRecordValue struct {
+	Ref struct {
+		IngressName string `json:"ingressName"`
+	}
+	Literal string `json:"literal"`
+}
+
+type RecordState int
+
+func (s RecordState) values() [4]string {
+	return [...]string{"initial", "pending", "active", "deleting"}
+}
+
+func (s RecordState) String() string {
+	return s.values()[s]
+}
+func (s RecordState) MarshalJSON() ([]byte, error) {
+	return json.Marshal(s.String())
+}
+func (s *RecordState) UnmarshalJSON(b []byte) error {
+	var str string
+	err := json.Unmarshal(b, &str)
+	if err != nil {
+		return err
+	}
+	for i, v := range s.values() {
+		if v == str {
+			*s = RecordState(i)
+			return nil
+		}
+	}
+	return nil
+}
+
+const (
+	STATE_INITIAL RecordState = iota
+	STATE_PENDING
+	STATE_ACTIVE
+	STATE_DELETING
+)
 
 // DNSStatus defines the observed state of DNS
 // +k8s:openapi-gen=true
 type DNSStatus struct {
-	// INSERT ADDITIONAL STATUS FIELD - define observed state of cluster
-	// Important: Run "operator-sdk generate k8s" to regenerate code after modifying this file
-	// Add custom validation using kubebuilder tags: https://book-v1.book.kubebuilder.io/beyond_basics/generating_crd.html
+	State RecordState `json:"state"`
+	ID    int         `json:"id"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

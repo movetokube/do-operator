@@ -29,16 +29,52 @@ spec:
           type: object
         spec:
           properties:
-            recordType:
-              description: 'INSERT ADDITIONAL SPEC FIELDS - desired state of cluster
-                Important: Run "operator-sdk generate k8s" to regenerate code after
-                modifying this file Add custom validation using kubebuilder tags:
-                https://book-v1.book.kubebuilder.io/beyond_basics/generating_crd.html'
+            domainName:
               type: string
+            flag:
+              format: int64
+              type: integer
+            hostname:
+              type: string
+            port:
+              format: int64
+              type: integer
+            priority:
+              format: int64
+              type: integer
+            recordType:
+              type: string
+            tag:
+              type: string
+            ttl:
+              format: int64
+              type: integer
+            value:
+              properties:
+                literal:
+                  type: string
+              required:
+              - literal
+              type: object
+            weight:
+              format: int64
+              type: integer
           required:
+          - domainName
           - recordType
+          - hostname
+          - value
           type: object
         status:
+          properties:
+            id:
+              format: int64
+              type: integer
+            state:
+              type: string
+          required:
+          - state
+          - id
           type: object
   version: v1alpha1
   versions:
