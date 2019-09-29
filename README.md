@@ -1,5 +1,5 @@
 # Digital Ocean Kubernetes Operator
-![](https://github.com/movetokube/do-operator/workflows/Tests/badge.svg) ![](https://github.com/movetokube/do-operator/workflows/Publush%20Release/badge.svg)
+![](https://github.com/movetokube/do-operator/workflows/Tests/badge.svg) ![](https://github.com/movetokube/do-operator/workflows/Publish%20Release/badge.svg)
 
 <p align="center">
     <img src=".assets/DO_Logo_horizontal_blue.svg" />
