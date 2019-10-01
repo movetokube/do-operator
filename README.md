@@ -2,7 +2,7 @@
 ![](https://github.com/movetokube/do-operator/workflows/Tests/badge.svg) ![](https://github.com/movetokube/do-operator/workflows/Publish%20Release/badge.svg)
 
 <p align="center">
-    <img src=".assets/do-operator-icon.png" />
+    <img src=".assets/do-operator-icon-small.png" />
 </p>
 
 This operator provides Digital Ocean Cloud resources via Kubernetes Custom Resource Definitions (CRDs).
