@@ -9,7 +9,7 @@ spec:
     listKind: DNSList
     plural: dns
     singular: dns
-  scope: Namespaced
+  scope: Cluster
   subresources:
     status: {}
   validation:
@@ -71,7 +71,8 @@ spec:
               format: int64
               type: integer
             state:
-              type: string
+              format: int64
+              type: integer
           required:
           - state
           - id
