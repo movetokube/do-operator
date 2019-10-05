@@ -73,6 +73,7 @@ type DNSStatus struct {
 // DNS is the Schema for the dns API
 // +k8s:openapi-gen=true
 // +kubebuilder:subresource:status
+// +genclient:nonNamespaced
 type DNS struct {
 	metav1.TypeMeta   `json:",inline"`
 	metav1.ObjectMeta `json:"metadata,omitempty"`
