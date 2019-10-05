@@ -6,7 +6,9 @@
 </p>
 
 This operator provides Digital Ocean Cloud resources via Kubernetes Custom Resource Definitions (CRDs).
-API Group is `do.movetokube.com`. Current version is `v1alpha1`. Example CR `apiVersion`: `do.movetokube.com/v1alpha1` 
+API Group is `do.movetokube.com`. Current version is `v1alpha1`. Example CR `apiVersion`: `do.movetokube.com/v1alpha1`.
+
+**Note. CRDs are cluster scoped by default, thus a single operator will control it's CRs in all namespaces**
 
 ## Supported Digital Ocean resources
 ### DNS
