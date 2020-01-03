@@ -1,7 +1,6 @@
 module github.com/movetokube/do-operator
 
 require (
-	github.com/NYTimes/gziphandler v1.0.1 // indirect
 	github.com/digitalocean/godo v1.22.0
 	github.com/go-logr/logr v0.1.0
 	github.com/go-openapi/spec v0.19.0
@@ -38,4 +37,6 @@ replace (
 
 replace github.com/operator-framework/operator-sdk => github.com/operator-framework/operator-sdk v0.10.0
 
-replace git.apache.org/thrift.git => github.com/apache/thrift v0.12.0
+//replace git.apache.org/thrift.git => github.com/apache/thrift v0.12.0
+
+go 1.13
